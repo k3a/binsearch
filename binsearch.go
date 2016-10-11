@@ -14,7 +14,7 @@ func main() {
 	flag.Parse()
 
 	if flag.NArg() != 1 || (len(*flagHex) == 0 && len(*flagStr) == 0) {
-		fmt.Printf("Usage: %s (-hex hexPattern|-string stringPattern) fileToSearch\n", os.Args[0])
+		fmt.Printf("Usage: %s <-hex hexPattern | -string stringPattern> fileToSearch\n", os.Args[0])
 		os.Exit(1)
 	}
 
