@@ -30,7 +30,7 @@ func main() {
 	}
 
 	if len(hexPattern) == 0 {
-		fmt.Printf("Error: Hex pattern must be at least one byte long\n")
+		fmt.Fprintf(os.Stderr, "Error: Hex pattern must be at least one byte long\n")
 		os.Exit(1)
 	}
 
@@ -40,7 +40,7 @@ func main() {
 	}
 	defer input.Close()
 
-	fmt.Println("Searching for...", hex.Dump(hexPattern))
+	fmt.Fprintln(os.Stderr, "Searching for...", hex.Dump(hexPattern))
 
 	oneByte := make([]byte, 1)
 	pos := 0
@@ -55,7 +55,7 @@ func main() {
 			matched++
 			if matched == len(hexPattern) {
 				pos -= len(hexPattern) - 1
-				fmt.Printf("PATTERN MATCHED at offset %d (0x%x)\n", pos, pos)
+				fmt.Printf("%d 0x%x\n", pos, pos)
 				os.Exit(0)
 			}
 		} else {
@@ -64,5 +64,6 @@ func main() {
 		pos++
 	}
 
-	fmt.Printf("PATTERN NOT MATCHED\n")
+	fmt.Fprintf(os.Stderr, "not found\n")
+	os.Exit(1)
 }

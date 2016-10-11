@@ -17,4 +17,10 @@ Because it is written in Go, it is multi-platform.
 ./binsearch -hex 1a2b3c /file/to/search
 ```
 
+## Output
 
+`dec 0xhex` on stdout + return 0
+
+or
+
+`not found` on stderr + return 1
